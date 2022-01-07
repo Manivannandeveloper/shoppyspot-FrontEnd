@@ -2,17 +2,25 @@
 namespace App\EventSubscriber;
 
 use App\Entity\TbProducts;
+use App\Entity\TbCategory;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Security\Core\Security;
 
-class EasyAdminSubscriber implements EventSubscriberInterface
+class ProductSubscriber implements EventSubscriberInterface
 {
-    private $slugger;
+  
+    /**
+     * @var Security
+     */
+    
+    private $security;
 
-    public function __construct($slugger)
+    public function __construct(Security $security)
     {
-        $this->slugger = $slugger;
+        $this->security = $security;
     }
+
 
     public static function getSubscribedEvents()
     {
@@ -21,21 +29,17 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function setUser(BeforeEntityPersistedEvent $event)
+    public function setUser(BeforeEntityPersistedEvent  $event)
     {
-        dd($event);
+        $entity = $event->getEntityInstance();
+        if ($entity instanceof TbProducts) {
+            $entity->setUsers($this->security->getUser());
+        }
+
+        if ($entity instanceof TbCategory) {
+            $entity->setUsers($this->security->getUser());
+        }
+       // dd($this->security->getUser());
+        //dd($entity);
     }
-
-
-    // public function setBlogPostSlug(BeforeEntityPersistedEvent $event)
-    // {
-    //     $entity = $event->getEntityInstance();
-
-    //     if (!($entity instanceof BlogPost)) {
-    //         return;
-    //     }
-
-    //     $slug = $this->slugger->slugify($entity->getTitle());
-    //     $entity->setSlug($slug);
-    // }
 }

@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class TbProductsCrudController extends AbstractCrudController
 {
@@ -27,6 +28,7 @@ class TbProductsCrudController extends AbstractCrudController
             TextEditorField::new('product_desc'),
             MoneyField::new('product_price')->setCurrency('INR'),
             AssociationField::new('category'),
+            IdField::new('product_status'),
             DateTimeField::new('created_at')
         ];
     }

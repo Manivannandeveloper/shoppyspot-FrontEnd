@@ -68,11 +68,6 @@ class TbProducts
     private $product_status;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $user_id;
-
-    /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $created_at;
@@ -86,6 +81,13 @@ class TbProducts
      * @ORM\ManyToOne(targetEntity="TbCategory", inversedBy="products")
      */
     private $category;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="TbUsers", inversedBy="products")
+     */
+    private $users;
+    
+
 
     public function getId(): ?int
     {
@@ -212,18 +214,6 @@ class TbProducts
         return $this;
     }
 
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?int $user_id): self
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
@@ -264,6 +254,26 @@ class TbProducts
     public function setCategory($category)
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of users
+     */ 
+    public function getUsers(): ? TbUsers
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set the value of users
+     *
+     * @return  self
+     */ 
+    public function setUsers(?TbUsers $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

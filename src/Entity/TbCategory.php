@@ -62,6 +62,11 @@ class TbCategory
      */
     private $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="TbUsers", inversedBy="category")
+     */
+    private $users;
+
 
     public function getId(): ?int
     {
@@ -187,5 +192,25 @@ class TbCategory
     public function __toString()
     {
         return $this->category_name;
+    }
+
+    /**
+     * Get the value of users
+     */ 
+    public function getUsers(): ?TbUsers
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set the value of users
+     *
+     * @return  self
+     */ 
+    public function setUsers(?TbUsers $users)
+    {
+        $this->users = $users;
+
+        return $this;
     }
 }
