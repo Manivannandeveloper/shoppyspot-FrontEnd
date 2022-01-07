@@ -21,6 +21,19 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $first_name;
+
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $last_name;
+
+
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
@@ -36,6 +49,17 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+     /**
+     * @ORM\OneToMany(targetEntity="TbProducts", mappedBy="users")
+     */
+    private $products;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TbCategory", mappedBy="users")
+     */
+    private $category;
+
 
     public function getId(): ?int
     {
@@ -124,5 +148,65 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * Get the value of first_name
+     */ 
+    public function getFirst_name()
+    {
+        return $this->first_name;
+    }
+
+    /**
+     * Set the value of first_name
+     *
+     * @return  self
+     */ 
+    public function setFirst_name($first_name)
+    {
+        $this->first_name = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of last_name
+     */ 
+    public function getLast_name()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * Set the value of last_name
+     *
+     * @return  self
+     */ 
+    public function setLast_name($last_name)
+    {
+        $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of products
+     */ 
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set the value of products
+     *
+     * @return  self
+     */ 
+    public function setProducts($products)
+    {
+        $this->products = $products;
+
+        return $this;
     }
 }

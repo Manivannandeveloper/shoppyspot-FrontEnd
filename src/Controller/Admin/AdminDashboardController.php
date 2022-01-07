@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\TbCategory;
 use App\Entity\TbProducts;
+use App\Entity\TbUsers;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -38,10 +39,11 @@ class AdminDashboardController extends AbstractDashboardController
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-
             MenuItem::section('Blog'),
+            MenuItem::linkToCrud('Products Posts', 'fa fa-file-text', TbProducts::class),
             MenuItem::linkToCrud('Categories', 'fa fa-tags', TbCategory::class),
-            MenuItem::linkToCrud('Blog Posts', 'fa fa-file-text', TbProducts::class)
+            MenuItem::linkToCrud('Users', 'fa fa-user', TbUsers::class)
+
         ];
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
