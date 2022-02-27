@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2022 at 04:38 AM
+-- Generation Time: Feb 27, 2022 at 04:29 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -40,7 +40,10 @@ CREATE TABLE `doctrine_migration_versions` (
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20220103075151', '2022-01-03 08:52:07', 98),
 ('DoctrineMigrations\\Version20220103105835', '2022-01-03 11:58:48', 345),
-('DoctrineMigrations\\Version20220103115030', '2022-01-03 12:50:42', 255);
+('DoctrineMigrations\\Version20220103115030', '2022-01-03 12:50:42', 255),
+('DoctrineMigrations\\Version20220107064817', '2022-01-07 07:48:41', 261),
+('DoctrineMigrations\\Version20220107075247', '2022-01-07 08:52:53', 211),
+('DoctrineMigrations\\Version20220107080244', '2022-01-07 09:02:49', 298);
 
 -- --------------------------------------------------------
 
@@ -57,17 +60,19 @@ CREATE TABLE `tb_category` (
   `category_image` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
+  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `users_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_category`
 --
 
-INSERT INTO `tb_category` (`id`, `parent_id`, `category_name`, `keyword`, `description`, `category_image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Mobiles', 'computer, technology', 'computer', NULL, 'Active', '0000-00-00 00:00:00', NULL),
-(2, 0, 'Books', 'books', 'books, books', NULL, 'Active', '0000-00-00 00:00:00', NULL),
-(3, 0, 'Electronics', 'electronics', 'technology, electronics', NULL, 'Active', '0000-00-00 00:00:00', NULL);
+INSERT INTO `tb_category` (`id`, `parent_id`, `category_name`, `keyword`, `description`, `category_image`, `status`, `created_at`, `updated_at`, `users_id`) VALUES
+(1, 0, 'Mobiles', 'computer, technology', 'computer', NULL, 'Active', '0000-00-00 00:00:00', NULL, NULL),
+(2, 0, 'Books', 'books', 'books, books', NULL, 'Active', '0000-00-00 00:00:00', NULL, NULL),
+(3, 0, 'Electronics', 'electronics', 'technology, electronics', NULL, 'Active', '0000-00-00 00:00:00', NULL, NULL),
+(5, 1, 'Dress', 'Dress', 'Testing Dress', NULL, 'Active', '2022-01-07 13:35:00', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -87,22 +92,25 @@ CREATE TABLE `tb_products` (
   `type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   `product_status` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
+  `updated_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `users_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_products`
 --
 
-INSERT INTO `tb_products` (`id`, `category_id`, `product_title`, `keyword`, `product_desc`, `image`, `product_price`, `product_details`, `type`, `year`, `product_status`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 'LG Fridge', 'LG', 'Testing', 'c399df65824b4607050a68ac646a0cdb.jpeg', 10000, 'testing', NULL, 2018, 1, 2, NULL, NULL),
-(2, 1, 'Iphone 11 Pro Max', '11 Pro', NULL, '740772a2cb62c0dfa3df3d81e0abc588.jpeg', 11500, 'testing', NULL, 2019, 1, 2, NULL, NULL),
-(3, 3, 'Front Load Washing Machine', 'Samsung', NULL, 'c399df65824b4607050a68ac646a0cdb.jpeg', 10000, 'testing', NULL, 2018, 1, 2, NULL, NULL),
-(4, 1, 'Iphone 12', '12 Pro', NULL, '740772a2cb62c0dfa3df3d81e0abc588.jpeg', 11500, 'testing', NULL, 2019, 1, 2, NULL, NULL),
-(5, 1, 'OnePlus9 128GB, 8GB RAM', 'One Plus', 'Model Name OnePlus 9R', 'sdsd', 35000, 'sdsd', 'sdsd', 2022, 1, 1, '2021-06-02 21:47:56', '2021-06-02 21:47:56'),
-(6, 1, 'OnePlus9R 128GB, 8GB RAM', 'One Plus', 'Model Name OnePlus 9R', '', 35000, '', 'sdsd', 2022, 1, 1, '2021-06-02 21:47:56', '2021-06-02 21:47:56');
+INSERT INTO `tb_products` (`id`, `category_id`, `product_title`, `keyword`, `product_desc`, `image`, `product_price`, `product_details`, `type`, `year`, `product_status`, `created_at`, `updated_at`, `users_id`) VALUES
+(1, 2, 'LG Fridge', 'LG', 'Testing', 'c399df65824b4607050a68ac646a0cdb.jpeg', 10000, 'testing', NULL, 2018, 1, NULL, NULL, NULL),
+(2, 1, 'Iphone 11 Pro Max', '11 Pro', NULL, '740772a2cb62c0dfa3df3d81e0abc588.jpeg', 11500, 'testing', NULL, 2019, 1, NULL, NULL, NULL),
+(3, 3, 'Front Load Washing Machine', 'Samsung', NULL, 'c399df65824b4607050a68ac646a0cdb.jpeg', 10000, 'testing', NULL, 2018, 1, NULL, NULL, NULL),
+(4, 1, 'Iphone 12', '12 Pro', NULL, '740772a2cb62c0dfa3df3d81e0abc588.jpeg', 11500, 'testing', NULL, 2019, 1, NULL, NULL, NULL),
+(5, 1, 'OnePlus9 128GB, 8GB RAM', 'One Plus', 'Model Name OnePlus 9R', 'sdsd', 35000, 'sdsd', 'sdsd', 2022, 1, '2021-06-02 21:47:56', '2021-06-02 21:47:56', NULL),
+(6, 1, 'OnePlus9R 128GB, 8GB RAM', 'One Plus', 'Model Name OnePlus 9R', '', 35000, '', 'sdsd', 2022, 1, '2021-06-02 21:47:56', '2021-06-02 21:47:56', NULL),
+(7, 3, 'Testing', 'test', '<div>Testing</div>', NULL, 350000, NULL, NULL, NULL, 1, '2022-01-07 12:27:00', NULL, NULL),
+(8, 1, 'One Plus', 'test', '<div>nord</div>', NULL, 350000, NULL, NULL, NULL, 1, '2022-01-07 14:05:00', NULL, 1),
+(9, 2, 'Testing Books', '1', '<ol><li>testing</li><li>sdsdsd</li></ol>', NULL, 10000, NULL, NULL, NULL, 1, '2022-01-08 13:26:00', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -114,15 +122,17 @@ CREATE TABLE `tb_users` (
   `id` int(11) NOT NULL,
   `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_users`
 --
 
-INSERT INTO `tb_users` (`id`, `email`, `roles`, `password`) VALUES
-(1, 'admin@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$3IWpbN7AxjVC.It/rWpVVed05jOXuzjBERpUC6ECISQDjJfLz939.');
+INSERT INTO `tb_users` (`id`, `email`, `roles`, `password`, `first_name`, `last_name`) VALUES
+(1, 'admin@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$3IWpbN7AxjVC.It/rWpVVed05jOXuzjBERpUC6ECISQDjJfLz939.', 'admin', 'Vinoth');
 
 --
 -- Indexes for dumped tables
@@ -138,14 +148,16 @@ ALTER TABLE `doctrine_migration_versions`
 -- Indexes for table `tb_category`
 --
 ALTER TABLE `tb_category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_3EEB0CDF67B3B43D` (`users_id`);
 
 --
 -- Indexes for table `tb_products`
 --
 ALTER TABLE `tb_products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_8B1D4F4412469DE2` (`category_id`);
+  ADD KEY `IDX_8B1D4F4412469DE2` (`category_id`),
+  ADD KEY `IDX_8B1D4F4467B3B43D` (`users_id`);
 
 --
 -- Indexes for table `tb_users`
@@ -162,13 +174,13 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT for table `tb_category`
 --
 ALTER TABLE `tb_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_products`
 --
 ALTER TABLE `tb_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_users`
@@ -181,10 +193,17 @@ ALTER TABLE `tb_users`
 --
 
 --
+-- Constraints for table `tb_category`
+--
+ALTER TABLE `tb_category`
+  ADD CONSTRAINT `FK_3EEB0CDF67B3B43D` FOREIGN KEY (`users_id`) REFERENCES `tb_users` (`id`);
+
+--
 -- Constraints for table `tb_products`
 --
 ALTER TABLE `tb_products`
-  ADD CONSTRAINT `FK_8B1D4F4412469DE2` FOREIGN KEY (`category_id`) REFERENCES `tb_category` (`id`);
+  ADD CONSTRAINT `FK_8B1D4F4412469DE2` FOREIGN KEY (`category_id`) REFERENCES `tb_category` (`id`),
+  ADD CONSTRAINT `FK_8B1D4F4467B3B43D` FOREIGN KEY (`users_id`) REFERENCES `tb_users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
