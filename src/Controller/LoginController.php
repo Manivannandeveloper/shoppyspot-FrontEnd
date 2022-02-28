@@ -50,7 +50,7 @@ class LoginController extends AbstractController
         } catch (\Exception $exp) {
             return Output::throwError("Internal Error ".$exp->getMessage());
         }
-        return $this->json(["status" => "SECUSS", "email" => $body['email'], "insertId"=>$insertId]);
+        return $this->json(["status" => "success", "email" => $body['email'], "insertId"=>$insertId]);
 
     }
 
@@ -76,9 +76,9 @@ class LoginController extends AbstractController
         ]); 
 
         if(!empty($items)){
-            return $this->json(["status" => "SECUSS", "email" => $body['email'], "insertId"=>$items]);
+            return $this->json(["status" => "success", "email" => $body['email'], "insertId"=>$items]);
         }  else{
-            return $this->json(["status" => "ERROR", "message" => 'Email id invalid.']);
+            return $this->json(["status" => "error", "message" => 'Email id invalid.']);
         } 
 
     }

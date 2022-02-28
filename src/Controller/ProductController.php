@@ -107,7 +107,7 @@ class ProductController extends AbstractController
              $data['sale'] = 'true';
              $data['images'] = $images[rand(0, 3)];
              $data['variants'] = $varients[rand(0, 3)];
-        return $this->json(["status" => "SECUSS", "data" => $data]);
+        return $this->json(["status" => "success", "data" => $data]);
     }
 
     /**
@@ -218,7 +218,7 @@ class ProductController extends AbstractController
             }
         }
 
-        return $this->json(["status" => "SECUSS", "data" => $data]);
+        return $this->json(["status" => "success", "data" => $data]);
     }
 
 
