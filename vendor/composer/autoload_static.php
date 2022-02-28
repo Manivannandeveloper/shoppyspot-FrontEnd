@@ -131,6 +131,7 @@ class ComposerStaticInit80e00ec9fa271960b813f09b79273160
         ),
         'N' => 
         array (
+            'Nelmio\\CorsBundle\\' => 18,
             'Namshi\\JOSE\\' => 12,
         ),
         'M' => 
@@ -522,6 +523,10 @@ class ComposerStaticInit80e00ec9fa271960b813f09b79273160
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
+        ),
         'Namshi\\JOSE\\' => 
         array (
             0 => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE',
@@ -631,13 +636,24 @@ class ComposerStaticInit80e00ec9fa271960b813f09b79273160
     );
 
     public static $classMap = array (
+        'App\\Controller\\Admin\\AdminDashboardController' => __DIR__ . '/../..' . '/src/Controller/Admin/AdminDashboardController.php',
+        'App\\Controller\\Admin\\TbCategoryCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/TbCategoryCrudController.php',
+        'App\\Controller\\Admin\\TbProductsCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/TbProductsCrudController.php',
+        'App\\Controller\\Admin\\TbUsersCrudController' => __DIR__ . '/../..' . '/src/Controller/Admin/TbUsersCrudController.php',
+        'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
         'App\\Controller\\ProductController' => __DIR__ . '/../..' . '/src/Controller/ProductController.php',
+        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
         'App\\Entity\\TbCategory' => __DIR__ . '/../..' . '/src/Entity/TbCategory.php',
         'App\\Entity\\TbProducts' => __DIR__ . '/../..' . '/src/Entity/TbProducts.php',
+        'App\\Entity\\TbUsers' => __DIR__ . '/../..' . '/src/Entity/TbUsers.php',
+        'App\\EventSubscriber\\ProductSubscriber' => __DIR__ . '/../..' . '/src/EventSubscriber/ProductSubscriber.php',
+        'App\\Form\\RegistrationFormType' => __DIR__ . '/../..' . '/src/Form/RegistrationFormType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\TbCategoryRepository' => __DIR__ . '/../..' . '/src/Repository/TbCategoryRepository.php',
         'App\\Repository\\TbProductsRepository' => __DIR__ . '/../..' . '/src/Repository/TbProductsRepository.php',
         'App\\Repository\\TbUsersRepository' => __DIR__ . '/../..' . '/src/Repository/TbUsersRepository.php',
+        'App\\Security\\AdminCustomAuthenticator' => __DIR__ . '/../..' . '/src/Security/AdminCustomAuthenticator.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -2424,6 +2440,16 @@ class ComposerStaticInit80e00ec9fa271960b813f09b79273160
         'Namshi\\JOSE\\Signer\\SecLib\\RSA' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SecLib/RSA.php',
         'Namshi\\JOSE\\Signer\\SignerInterface' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SignerInterface.php',
         'Namshi\\JOSE\\SimpleJWS' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/SimpleJWS.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Compiler\\CorsConfigurationProviderPass' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Compiler/CorsConfigurationProviderPass.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Configuration.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\NelmioCorsExtension' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/NelmioCorsExtension.php',
+        'Nelmio\\CorsBundle\\EventListener\\CacheableResponseVaryListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CacheableResponseVaryListener.php',
+        'Nelmio\\CorsBundle\\EventListener\\CorsListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CorsListener.php',
+        'Nelmio\\CorsBundle\\NelmioCorsBundle' => __DIR__ . '/..' . '/nelmio/cors-bundle/NelmioCorsBundle.php',
+        'Nelmio\\CorsBundle\\Options\\ConfigProvider' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ConfigProvider.php',
+        'Nelmio\\CorsBundle\\Options\\ProviderInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ProviderInterface.php',
+        'Nelmio\\CorsBundle\\Options\\Resolver' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/Resolver.php',
+        'Nelmio\\CorsBundle\\Options\\ResolverInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ResolverInterface.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/NumberFormatter.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',

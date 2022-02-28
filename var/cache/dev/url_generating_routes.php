@@ -16,6 +16,7 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\Admin\\AdminDashboardController::index'], [], [['text', '/admin']], [], [], []],
     'userRegister' => [[], ['_controller' => 'App\\Controller\\LoginController::userRegister'], [], [['text', '/user/register']], [], [], []],
+    'userLogin' => [[], ['_controller' => 'App\\Controller\\LoginController::userLogin'], [], [['text', '/user/login']], [], [], []],
     'blog_list' => [['page'], ['page' => 5, '_controller' => 'App\\Controller\\ProductController::Postlist'], ['page' => '\\d+'], [['variable', '/', '\\d+', 'page', true]], [], [], []],
     'productDetails' => [['id'], ['_controller' => 'App\\Controller\\ProductController::productDetails'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/product']], [], [], []],
     'productAdd' => [[], ['_controller' => 'App\\Controller\\ProductController::productAdd'], [], [['text', '/product/add']], [], [], []],

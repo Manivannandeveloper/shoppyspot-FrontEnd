@@ -27,24 +27,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '9f339f866b8004a67cd2a5a562dca06c7e045377',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '9f339f866b8004a67cd2a5a562dca06c7e045377',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -292,6 +292,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '89a24d7eb3040e285dd5925fcad992378b82bcff',
+    ),
+    'nelmio/cors-bundle' => 
+    array (
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0ee5ee30b0ee08ea122d431ae6e0ddeb87f035c0',
     ),
     'nikic/php-parser' => 
     array (
