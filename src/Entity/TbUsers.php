@@ -163,7 +163,7 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Get the value of first_name
      */ 
-    public function getFirst_name()
+    public function getFirstname()
     {
         return $this->first_name;
     }
@@ -183,7 +183,7 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Get the value of last_name
      */ 
-    public function getLast_name()
+    public function getLastname()
     {
         return $this->last_name;
     }
