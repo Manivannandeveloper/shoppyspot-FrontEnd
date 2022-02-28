@@ -32,14 +32,13 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Back End Service');
+            ->setTitle('Admin Panel');
     }
 
     public function configureMenuItems(): iterable
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::section('Blog'),
             MenuItem::linkToCrud('Products Posts', 'fa fa-file-text', TbProducts::class),
             MenuItem::linkToCrud('Categories', 'fa fa-tags', TbCategory::class),
             MenuItem::linkToCrud('Users', 'fa fa-user', TbUsers::class)
