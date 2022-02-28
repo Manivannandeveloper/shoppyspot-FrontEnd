@@ -50,6 +50,16 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $mobile_no;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ov_password;
+
      /**
      * @ORM\OneToMany(targetEntity="TbProducts", mappedBy="users")
      */
@@ -209,4 +219,29 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getMobileNo(): ?int
+    {
+        return $this->mobile_no;
+    }
+
+    public function setMobileNo(?int $mobile_no): self
+    {
+        $this->mobile_no = $mobile_no;
+
+        return $this;
+    }
+
+    public function getOvPassword(): ?string
+    {
+        return $this->ov_password;
+    }
+
+    public function setOvPassword(?string $ov_password): self
+    {
+        $this->ov_password = $ov_password;
+
+        return $this;
+    }
+    
 }
