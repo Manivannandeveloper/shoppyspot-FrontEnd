@@ -144,7 +144,7 @@ class ProductController extends AbstractController
     {
         $limit = $request->get('limit', 10);
         $repository = $this->getDoctrine()->getRepository(TbProducts::class);
-        $items = $repository->findAll();
+        $items = $repository->findBy(array(), array('id' => 'DESC'));
         $data = [];
         $images = array(
                         array("productId"=> 1, 
