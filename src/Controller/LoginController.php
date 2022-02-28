@@ -45,11 +45,42 @@ class LoginController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($insertUser);
             $em->flush();
+            $insertId = $insertUser->getId();
 
         } catch (\Exception $exp) {
             return Output::throwError("Internal Error ".$exp->getMessage());
         }
-        return $this->json(["status" => "SECUSS", "email" => $body['email']]);
+        return $this->json(["status" => "SECUSS", "email" => $body['email'], "insertId"=>$insertId]);
 
     }
+
+    /**
+     * @Route("/user/login", name="userLogin", methods={"POST"})
+     * 
+     * 
+     */
+    public function userLogin(Request $request)
+    {
+        $body = $request->getContent();
+        if (empty($body)) {
+            return Output::throwErrorBadRequest("Bad request");
+        }
+        $body = json_decode($body, true);
+        if (!$body || empty($body['email']) ||  empty($body['password'])) {
+            return Output::throwErrorBadRequest("Bad request");
+        } 
+        $repository = $this->getDoctrine()->getRepository(TbUsers::class);
+        $items = $repository->findOneBy([
+            'email' => $body['email'],
+            'password' => md5($body['password']),
+        ]); 
+
+        if(!empty($items)){
+            return $this->json(["status" => "SECUSS", "email" => $body['email'], "insertId"=>$items]);
+        }  else{
+            return $this->json(["status" => "ERROR", "message" => 'Email id invalid.']);
+        } 
+
+    }
+
 }
