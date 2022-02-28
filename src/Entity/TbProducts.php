@@ -277,4 +277,9 @@ class TbProducts
 
         return $this;
     }
+
+    public function toString()
+    {
+        return $this->product_title;
+    }
 }

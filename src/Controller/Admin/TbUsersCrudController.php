@@ -8,6 +8,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+
 class TbUsersCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -15,6 +17,13 @@ class TbUsersCrudController extends AbstractCrudController
         return TbUsers::class;
     }
 
+    public function configureCrud(Crud  $crud): Crud 
+    {
+        return $crud
+        ->setPageTitle('index', 'Users')
+        ->setEntityLabelInSingular('User')
+        ;
+    }
     
     public function configureFields(string $pageName): iterable
     {
@@ -23,7 +32,7 @@ class TbUsersCrudController extends AbstractCrudController
             TextField::new('first_name'),
             TextField::new('last_name'),
             EmailField::new('email'),
-            TextField::new('password')
+            IdField::new('mobile_no')
         ];
     }
     
