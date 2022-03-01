@@ -326,7 +326,7 @@ class TbCategory extends \App\Entity\TbCategory implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
@@ -337,7 +337,7 @@ class TbCategory extends \App\Entity\TbCategory implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function setCreatedAt(\DateTimeImmutable $created_at): \App\Entity\TbCategory
+    public function setCreatedAt(\DateTime $created_at): \App\Entity\TbCategory
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$created_at]);
@@ -420,6 +420,28 @@ class TbCategory extends \App\Entity\TbCategory implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsers', [$users]);
 
         return parent::setUsers($users);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addProduct(\App\Entity\TbProducts $product): \App\Entity\TbCategory
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', [$product]);
+
+        return parent::addProduct($product);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeProduct(\App\Entity\TbProducts $product): \App\Entity\TbCategory
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', [$product]);
+
+        return parent::removeProduct($product);
     }
 
 }

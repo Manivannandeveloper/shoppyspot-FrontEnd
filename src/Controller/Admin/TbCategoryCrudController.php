@@ -34,7 +34,8 @@ class TbCategoryCrudController extends AbstractCrudController
             TextField::new('category_name'),
             TextField::new('keyword'),
             TextField::new('description'),
-            TextField::new('status')
+            TextField::new('status'),
+            DateTimeField::new('created_at')
         ];
     }
 }
