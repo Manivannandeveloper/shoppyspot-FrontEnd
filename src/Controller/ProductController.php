@@ -97,13 +97,20 @@ class ProductController extends AbstractController
              $data['id'] = $productDetails->getId();
              $data['title'] = $productDetails->getProductTitle();
              $data['description'] = $productDetails->getProductTitle();
-             $data['type'] = $productDetails->getType();
+             $data['type'] = $productDetails->getProductType();
              $data['brand'] = $productDetails->getProductTitle();
              $data['category'] = $productDetails->getCategory()->getCategoryName();
              $data['price'] = $productDetails->getProductPrice();
              $data['new'] = $productDetails->getProductStatus();
              $data['stock'] = $productDetails->getProductStatus();
-             $data['discount'] = rand(50,10);
+             $data['discount'] = $productDetails->getProduct_discount();
+             
+             if(!empty($productDetails->getProductSize()->getSizeName()) && is_null($productDetails->getProductSize()->getSizeName())){
+               $data['size'] = $productDetails->getProductSize()->getSizeName();
+             }
+
+             $data['color'] = is_null($productDetails->getProductColor()->getColorName())? "":$productDetails->getProductColor()->getColorName();
+             $data['instock'] = $productDetails->getProduct_instoct();  
              $data['sale'] = 'true';
              $data['images'] = $images[rand(0, 3)];
              $data['variants'] = $varients[rand(0, 3)];
@@ -204,15 +211,21 @@ class ProductController extends AbstractController
               $data[$key]['id'] = $itemsvalue->getId();
               $data[$key]['title'] = $itemsvalue->getProductTitle();
               $data[$key]['description'] = $itemsvalue->getProductTitle();
-              $data[$key]['type'] = $itemsvalue->getType();
+              $data[$key]['type'] = $itemsvalue->getProductType();
               $data[$key]['brand'] = $itemsvalue->getProductTitle();
               $data[$key]['category'] = $itemsvalue->getCategory()->getCategoryName();
               $data[$key]['price'] = $itemsvalue->getProductPrice();
               $data[$key]['new'] = $itemsvalue->getProductStatus();
               $data[$key]['stock'] = $itemsvalue->getProductStatus();
-              $data[$key]['discount'] = rand(50,10);
+              $data[$key]['discount'] = $itemsvalue->getProduct_discount();
+              if(!empty($itemsvalue->getProductSize()->getSizeName()) && is_null($itemsvalue->getProductSize()->getSizeName())){
+                $data[$key]['size'] = $itemsvalue->getProductSize()->getSizeName();
+              }
+
+              $data[$key]['color'] = is_null($itemsvalue->getProductColor()->getColorName())? "":$itemsvalue->getProductColor()->getColorName();
+              $data[$key]['instock'] = $itemsvalue->getProduct_instoct();  
               $data[$key]['sale'] = 'true';
-              $data[$key]['images'] = $images[rand(0, 3)];
+              $data[$key]['images'] = $itemsvalue->getImage();
               $data[$key]['variants'] = $images[rand(0, 3)];
 
             }

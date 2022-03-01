@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TbUsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -69,6 +71,12 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity="TbCategory", mappedBy="users")
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+        $this->category = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -240,6 +248,72 @@ class TbUsers implements UserInterface, PasswordAuthenticatedUserInterface
     public function setOvPassword(?string $ov_password): self
     {
         $this->ov_password = $ov_password;
+
+        return $this;
+    }
+
+    public function setFirstName(string $first_name): self
+    {
+        $this->first_name = $first_name;
+
+        return $this;
+    }
+
+    public function setLastName(string $last_name): self
+    {
+        $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function addProduct(TbProducts $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(TbProducts $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getUsers() === $this) {
+                $product->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TbCategory[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(TbCategory $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+            $category->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(TbCategory $category): self
+    {
+        if ($this->category->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getUsers() === $this) {
+                $category->setUsers(null);
+            }
+        }
 
         return $this;
     }

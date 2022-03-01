@@ -66,10 +66,10 @@ class TbUsers extends \App\Entity\TbUsers implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'id', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'first_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'last_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'email', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'products', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'category'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'id', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'first_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'last_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'email', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'mobile_no', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'ov_password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'products', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'category'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'id', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'first_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'last_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'email', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'products', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'category'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'id', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'first_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'last_name', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'email', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'mobile_no', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'ov_password', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'products', '' . "\0" . 'App\\Entity\\TbUsers' . "\0" . 'category'];
     }
 
     /**
@@ -304,12 +304,12 @@ class TbUsers extends \App\Entity\TbUsers implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getFirst_name()
+    public function getFirstname()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirst_name', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstname', []);
 
-        return parent::getFirst_name();
+        return parent::getFirstname();
     }
 
     /**
@@ -326,12 +326,12 @@ class TbUsers extends \App\Entity\TbUsers implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getLast_name()
+    public function getLastname()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLast_name', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastname', []);
 
-        return parent::getLast_name();
+        return parent::getLastname();
     }
 
     /**
@@ -365,6 +365,127 @@ class TbUsers extends \App\Entity\TbUsers implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProducts', [$products]);
 
         return parent::setProducts($products);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMobileNo(): ?int
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMobileNo', []);
+
+        return parent::getMobileNo();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMobileNo(?int $mobile_no): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMobileNo', [$mobile_no]);
+
+        return parent::setMobileNo($mobile_no);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOvPassword(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOvPassword', []);
+
+        return parent::getOvPassword();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOvPassword(?string $ov_password): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOvPassword', [$ov_password]);
+
+        return parent::setOvPassword($ov_password);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFirstName(string $first_name): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', [$first_name]);
+
+        return parent::setFirstName($first_name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLastName(string $last_name): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', [$last_name]);
+
+        return parent::setLastName($last_name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addProduct(\App\Entity\TbProducts $product): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', [$product]);
+
+        return parent::addProduct($product);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeProduct(\App\Entity\TbProducts $product): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', [$product]);
+
+        return parent::removeProduct($product);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategory(): \Doctrine\Common\Collections\Collection
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
+
+        return parent::getCategory();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCategory(\App\Entity\TbCategory $category): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCategory', [$category]);
+
+        return parent::addCategory($category);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCategory(\App\Entity\TbCategory $category): \App\Entity\TbUsers
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCategory', [$category]);
+
+        return parent::removeCategory($category);
     }
 
 }

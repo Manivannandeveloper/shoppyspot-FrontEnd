@@ -53,4 +53,5 @@
   52 => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableArgumentResolver',
   53 => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableControllerResolver',
   54 => 'Symfony\\Component\\Security\\Http\\Controller\\UserValueResolver',
+  55 => 'Vich\\UploaderBundle\\Entity\\File',
 );
